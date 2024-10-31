@@ -78,8 +78,8 @@ export default function Main() {
             return (
               <MoreInfoDialog strayPet={strayPet} key={index}>
                 <AdvancedMarker  position={{lat: Number(strayPet.Latitude), lng: Number(strayPet.Longitude)}}>
-                <Image className="rounded-[100px] border-4 border-white" src={strayPet.ImageURL} alt="cat image" width="60" height="60"/>
-                  <div className="text-center font-bold text-md bg-white rounded-xl py-1 px-2 mt-[-5px]">{getTimeDifference(strayPet.CreatedAt)}</div>
+                <Image className="rounded-[100px] border-4 border-white dark:border-black" src={strayPet.ImageURL} alt="cat image" width="60" height="60"/>
+                  <div className="text-center font-bold text-md bg-white dark:bg-black dark:text-white rounded-xl py-1 px-2 mt-[-5px]">{getTimeDifference(strayPet.CreatedAt)}</div>
                 </AdvancedMarker>
               </MoreInfoDialog>
             )

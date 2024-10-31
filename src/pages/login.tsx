@@ -19,6 +19,16 @@ export default function LoginCard() {
   const router = useRouter()
   const { setToken, token } = useAuthStore.getState()
 
+  useEffect(() => {
+    if(isLoading) {
+      setIsLoading(false)
+      return
+    }
+    if(token && token !== 'No Value') {
+      router.push('/home')
+    }
+  }, [isLoading])
+
   const HandleGoogleLoginOAuth = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
           try {
@@ -40,7 +50,7 @@ export default function LoginCard() {
                       ),
                     })
                   setToken(response.data.token)
-                  router.push('/main')
+                  router.push('/home')
               } else {
                   toast({
                       title: "Uh Oh! An error occured.",

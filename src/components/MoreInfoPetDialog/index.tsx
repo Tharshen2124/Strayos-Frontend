@@ -44,7 +44,7 @@ export default function MoreInfoDialog(props: AddStrayPetDialogProps) {
                     <DialogHeader>
                     <DialogTitle className="mb-8 text-2xl text-center dark:text-white">{props.strayPet.Animal}</DialogTitle>
                         <DialogDescription className="mt-2 text-center">
-                            <img src="/cat_moew.png" className="mx-auto w-32 h-32 rounded-[100px]"/>
+                            <img src={props.strayPet.ImageURL} className="mx-auto w-32 h-32 rounded-[100px]"/>
                             <p className="text-[#333] dark:text-[#e0e0e0] text-lg font-medium mt-1">{props.strayPet.Status}</p>
                             <p className="mt-2 dark:text-[#e0e0e0]">{getTimeDifference(props.strayPet.CreatedAt)}</p>
                         </DialogDescription>

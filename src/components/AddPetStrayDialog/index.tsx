@@ -73,7 +73,7 @@ export default function AddStrayPetDialog(props: AddStrayPetDialogProps) {
             <DialogTrigger asChild>
                 <Button className="absolute left-1/2 bottom-[30px] transform -translate-x-1/2 bg-white text-black hover:bg-slate-100 rounded-[5px] shadow-sm text-md px-10 py-6 dark:text-white dark:bg-black dark:hover:bg-[#333]">Add a Stray</Button>
             </DialogTrigger>
-            <DialogContent className="dark:bg-[#222] dark:border-none">
+            <DialogContent className="dark:bg-[#222] dark:border-none text-start">
                 <form>
                     <DialogHeader>
                     <DialogTitle className="mb-8 text-2xl dark:text-white">Add Stray</DialogTitle>

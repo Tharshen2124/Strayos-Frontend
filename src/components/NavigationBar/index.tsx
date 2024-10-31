@@ -60,8 +60,8 @@ export function NavigationBar() {
                 }
             </div>
             <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-                <Link href="/" className="text-muted-foreground transition-colors hover:text-foreground dark:text-[#e0e0e0] font-semibold">Home</Link>
-                <Link href="/missing-pets" className="w-[84px] text-muted-foreground transition-colors hover:text-foreground dark:text-[#e0e0e0] font-semibold">Missing Pets</Link>
+                <Link href="/home" className="text-muted-foreground transition-colors hover:text-foreground dark:text-[#e0e0e0] font-semibold dark:hover:text-white">Home</Link>
+                <Link href="/missing-pets" className="w-[84px] text-muted-foreground transition-colors hover:text-foreground dark:text-[#e0e0e0] font-semibold dark:hover:text-white">Missing Pets</Link>
             </nav>
             
             <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4 justify-end">
@@ -73,10 +73,8 @@ export function NavigationBar() {
                     </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuLabel className="dark:text-white">My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Settings</DropdownMenuItem>
-                    <DropdownMenuItem>Support</DropdownMenuItem>
                     <DropdownMenuItem onClick={HandleLogout}>Logout</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
@@ -108,11 +106,14 @@ export function NavigationBar() {
                                 alt="logo cat"
                         />
                     }
-                    <Link href="/main" className="text-muted-foreground hover:text-foreground dark:text-[#d9d9d9] hover:text-white">
+                    <Link href="/home" className="text-muted-foreground hover:text-foreground dark:text-[#d9d9d9] dark:hover:text-white">
                         Home
                     </Link>
-                    <Link href="/missing-pets" className="text-muted-foreground hover:text-foreground dark:text-[#d9d9d9] hover:text-white">
+                    <Link href="/missing-pets" className="text-muted-foreground hover:text-foreground dark:text-[#d9d9d9] dark:hover:text-white">
                         Stray
+                    </Link>
+                    <Link onClick={HandleLogout} href="/missing-pets" className="mt-10 font-semibold text-muted-foreground hover:text-foreground dark:text-[#d9d9d9] hover:text-white">
+                        Logout
                     </Link>
                     </nav>
                 </SheetContent>

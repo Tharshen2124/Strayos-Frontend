@@ -24,7 +24,7 @@ export default function Landing() {
 
     function handleLogin() {
         if(token && token !== 'No Value') {
-            router.push('/main')
+            router.push('/home')
         }
     }
 
@@ -68,7 +68,7 @@ export default function Landing() {
             <h1 className="text-[3.4rem] font-bold text-white">Where Animal Lovers </h1>
             <h1 className="text-[3.4rem] font-bold text-white">Meet Street Souls</h1>
             <div className="flex mt-4">
-                <button className="rounded-[100px] py-3 px-16 font-bold bg-white text-black" onClick={() => router.push("/login")}>Sign in</button>
+                <button className="rounded-[100px] py-3 px-16 font-bold bg-white text-black" onClick={() => handleLogin()}>Sign in</button>
                 <div className="ml-5">
                     <p className="text-white">Don't have an account?</p>
                     <Link href="/signup" className="text-white font-bold hover:underline">Sign up here!</Link>
