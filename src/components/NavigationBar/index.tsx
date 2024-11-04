@@ -10,7 +10,7 @@ import {
   Button,
   Sheet, SheetContent, SheetTrigger
 } from "@/src/components/ui"
-import { CircleUser, Menu, Package2 } from "lucide-react"
+import { CircleUser, Menu } from "lucide-react"
 import useAuthStore from "@/src/store/useAuthStore"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"

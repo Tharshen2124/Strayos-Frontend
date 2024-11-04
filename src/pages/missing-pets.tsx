@@ -11,7 +11,7 @@ import {
   CardTitle,
   Button,
 } from "@/src/components/ui"
-import { BellRing, Search } from 'lucide-react'
+import { Search } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { NavigationBar } from "../components/NavigationBar"
 import useAuthStore from "../store/useAuthStore"

@@ -1,7 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import useAuthStore from "../store/useAuthStore";
-import { useEffect, useState } from "react";
-import { NavigationBar } from "../components/NavigationBar";
 
 export default function Document() {
   return (

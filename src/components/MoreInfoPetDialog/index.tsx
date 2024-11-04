@@ -9,16 +9,8 @@ import {
     DialogTitle,
     DialogTrigger,
     Button,
-    Input,
-    Label
 } from "@/src/components/ui"
 import React, { useState } from "react"
-import axios, { AxiosResponse } from "axios"
-import { apiUrl } from "@/src/utils/env"
-import { Prosto_One } from "next/font/google"
-import useAuthStore from "@/src/store/useAuthStore"
-import { useToast } from "@/src/hooks/use-toast"
-import { ToastAction } from "../ui/toast"
 import { Straypet } from "@/src/types/straypets"
 import { getTimeDifference } from "@/src/utils/getTimeDifference"
 
@@ -28,10 +20,6 @@ type AddStrayPetDialogProps = {
 };
 
 export default function MoreInfoDialog(props: AddStrayPetDialogProps) {
-    const { toast } = useToast()
-    const [animal, setAnimal] = useState<string>("")
-    const [status, setStatus] = useState<string>("")
-    const [image, setImage] = useState<any>()
     const [open, setOpen] = useState<boolean>(false)
 
     return (

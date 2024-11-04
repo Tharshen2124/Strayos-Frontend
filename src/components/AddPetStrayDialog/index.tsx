@@ -15,10 +15,8 @@ import {
 import { useState } from "react"
 import axios, { AxiosResponse } from "axios"
 import { apiUrl } from "@/src/utils/env"
-import { Prosto_One } from "next/font/google"
 import useAuthStore from "@/src/store/useAuthStore"
 import { useToast } from "@/src/hooks/use-toast"
-import { ToastAction } from "../ui/toast"
 
 type AddStrayPetDialogProps = {
     latitude: number;

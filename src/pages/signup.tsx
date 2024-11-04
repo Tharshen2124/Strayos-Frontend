@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Input, Label } from "../components/ui";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { apiUrl } from "../utils/env";
 import { useRouter } from "next/router";
 import useAuthStore from "../store/useAuthStore";
