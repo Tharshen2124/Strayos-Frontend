@@ -33,16 +33,26 @@ export default function AddStrayPetDialog(props: AddStrayPetDialogProps) {
     const [open, setOpen] = useState<boolean>(false)
     const { token } = useAuthStore.getState()
 
+    const uploadToClient = (e: any) => {
+        if (e.target.files && e.target.files[0]) {
+          const i = e.target.files[0]
+          setImage(i)
+        }
+    }
+
     async function handleSubmit(event: any) {
+        event.preventDefault()
+        
         const body = new FormData()
         body.append("Animal", animal)
         body.append("Status", status)
-        body.append("Image", image)
         body.append("UserId", "3")
+        body.append("Image", image)
         body.append("Latitude", props.latitude.toString())
         body.append("Longitude", props.latitude.toString())
 
-        event.preventDefault()
+        console.log("Image", image)
+
         try {
             const response: AxiosResponse = await axios({
                 method: "POST",
@@ -92,7 +102,7 @@ export default function AddStrayPetDialog(props: AddStrayPetDialogProps) {
                         <div>
                             <DialogDescription className="mt-2">
                                 <Label className="dark:text-[#d9d9d9]">Image</Label>
-                                <Input className="mt-2 dark:text-white dark:bg-[#555] dark:border-[#555]" type="file" onChange={(e) => setImage(e.target.value)}/>
+                                <Input className="mt-2 dark:text-white dark:bg-[#555] dark:border-[#555]" type="file" onChange={uploadToClient}/>
                             </DialogDescription>
                         </div>
                     </DialogHeader>
