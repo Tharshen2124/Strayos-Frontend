@@ -70,7 +70,7 @@ export default function Landing() {
             <div className="flex mt-4">
                 <button className="rounded-[100px] py-3 px-16 font-bold bg-white text-black" onClick={() => handleLogin()}>Sign in</button>
                 <div className="ml-5">
-                    <p className="text-white">Don't have an account?</p>
+                    <p className="text-white">Don&apos;t have an account?</p>
                     <Link href="/signup" className="text-white font-bold hover:underline">Sign up here!</Link>
                 </div>
             </div>
