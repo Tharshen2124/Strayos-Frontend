@@ -55,7 +55,7 @@ export default function AddStrayPetDialog(props: AddStrayPetDialogProps) {
         body.append("UserId", "3")
         body.append("Image", image)
         body.append("Latitude", props.latitude.toString())
-        body.append("Longitude", props.latitude.toString())
+        body.append("Longitude", props.longitude.toString())
 
         console.log("Image", image)
 
