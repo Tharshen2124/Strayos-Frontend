@@ -17,6 +17,7 @@ import axios, { AxiosResponse } from "axios"
 import { apiUrl } from "@/src/utils/env"
 import useAuthStore from "@/src/store/useAuthStore"
 import { useToast } from "@/src/hooks/use-toast"
+import { useRouter } from "next/router"
 
 type AddStrayPetDialogProps = {
     latitude: number;
@@ -29,6 +30,7 @@ export default function AddStrayPetDialog(props: AddStrayPetDialogProps) {
     const [status, setStatus] = useState<string>("")
     const [image, setImage] = useState<any>()
     const [open, setOpen] = useState<boolean>(false)
+    const router = useRouter()
     const { token } = useAuthStore.getState()
 
     const uploadToClient = (e: any) => {
@@ -40,6 +42,12 @@ export default function AddStrayPetDialog(props: AddStrayPetDialogProps) {
 
     async function handleSubmit(event: any) {
         event.preventDefault()
+
+        setOpen(false);
+        toast({
+            title: "Adding the stray to our database...",
+            description: "Give it some time ya lol",
+        })
         
         const body = new FormData()
         body.append("Animal", animal)
@@ -65,6 +73,7 @@ export default function AddStrayPetDialog(props: AddStrayPetDialogProps) {
             toast({
                 title: "Noice! You've added a stray.",
             })
+            router.reload()
         } catch(error: any) {
             toast({
                 title: "Uh Oh! An error occured.",

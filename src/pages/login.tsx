@@ -31,6 +31,10 @@ export default function LoginCard() {
 
   const HandleGoogleLoginOAuth = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
+          toast({
+            title: "Attempting your login...",
+            description: "Gotta check if you're not animal control :P",
+          })
           try {
               const response: AxiosResponse = await axios.post(`${apiUrl}/google-oauth/login`,{ 
                       "accessToken": tokenResponse.access_token
@@ -44,10 +48,7 @@ export default function LoginCard() {
 
               if(response.data.token) { 
                   toast({
-                      title: "Noice! You're logged in.",
-                      action: (
-                        <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-                      ),
+                      title: "Nice! You're logged in.",
                     })
                   setToken(response.data.token)
                   router.push('/home')
