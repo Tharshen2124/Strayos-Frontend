@@ -51,10 +51,9 @@ export default function Landing() {
                 alt="logo cat"
            />
         }
-        <div className="flex items-center gap-x-16 font-semibold">
-            <Link href="#" className="dark:text-white">About</Link>
-            <div onClick={() => handleLogin()} className="dark:text-white">Sign in</div>
-            <button className="rounded-[100px] py-2 px-8 font-bold bg-black text-white dark:bg-white dark:text-black" onClick={() => router.push("/signup")}>Sign up</button>
+        <div className="flex items-center md:gap-x-16 gap-x-8 font-semibold">
+            <div onClick={() => handleLogin()} className="dark:text-white md:text-md text-sm md:block hidden">Sign in</div>
+            <button className="rounded-[100px] py-2 md:px-8 px-6 font-bold bg-black text-white dark:bg-white dark:text-black md:text-md text-sm" onClick={() => router.push("/signup")}>Sign up</button>
         </div>
     </nav>
     <div 
@@ -67,11 +66,11 @@ export default function Landing() {
         className="flex-1 flex items-center" // Added flex and items-center
     >
         <div className="mx-[60px]"> {/* Added margin here instead */}
-            <h1 className="text-[3.4rem] font-bold text-white">Where Animal Lovers </h1>
-            <h1 className="text-[3.4rem] font-bold text-white">Meet Street Souls</h1>
-            <div className="flex mt-4">
-                <button className="rounded-[100px] py-3 px-16 font-bold bg-white text-black" onClick={() => handleLogin()}>Sign in</button>
-                <div className="ml-5">
+            <h1 className="md:text-[3.4rem] text-[1.8rem] sm:text-[2.2rem] font-bold text-white">Where Animal Lovers </h1>
+            <h1 className="md:text-[3.4rem] text-[1.8rem] sm:text-[2.2rem] font-bold text-white">Meet Street Souls</h1>
+            <div className="md:flex mt-4 block">
+                <button className="rounded-[100px] py-3 md:px-16 px-8 md:text-md text-sm font-bold bg-white text-black" onClick={() => handleLogin()}>Sign in</button>
+                <div className="md:ml-5 mt-5 md:mt-0">
                     <p className="text-white">Don&apos;t have an account?</p>
                     <Link href="/signup" className="text-white font-bold hover:underline">Sign up here!</Link>
                 </div>
