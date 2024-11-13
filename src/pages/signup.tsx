@@ -47,7 +47,6 @@ export default function Signup() {
                         description: "Try again",
                         variant: "destructive",
                     })
-                    console.log("No Token")
                 }
                 
             } catch(error: any) {
@@ -63,7 +62,9 @@ export default function Signup() {
         })
         event.preventDefault()
         if (password !== confirmPassword) {
-            console.log("Password doesn't match")
+            toast({
+                title: "Password does not match...",
+            })
             return 
         }
         try {
@@ -90,7 +91,6 @@ export default function Signup() {
                     description: "Try again",
                     variant: "destructive",
                   })
-                console.log("No Token")
             }
             
         } catch (error: any) {
@@ -99,7 +99,7 @@ export default function Signup() {
                 description: "Try again",
                 variant: "destructive",
               })
-            console.log("Error occured", error)
+            console.error("Error occured", error)
         }
     }
 

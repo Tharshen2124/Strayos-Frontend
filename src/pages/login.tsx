@@ -58,7 +58,6 @@ export default function LoginCard() {
                       description: "Try again",
                       variant: "destructive",
                   })
-                  console.log("No Token")
               }
               
           } catch(error: any) {
@@ -95,7 +94,6 @@ export default function LoginCard() {
           description: "Try again",
           variant: "destructive",
         })
-        console.log("No Token")
       }           
 
 

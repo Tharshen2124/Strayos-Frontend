@@ -96,7 +96,6 @@ export default function AddStrayPetDialog(props: AddStrayPetDialogProps) {
                     "Authorization": `Bearer ${token}`
                 }
             })
-            console.log("response", response.data)
             toast({
                 title: "Noice! You've added a stray.",
             })
