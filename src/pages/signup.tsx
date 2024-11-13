@@ -105,29 +105,29 @@ export default function Signup() {
 
     return (
     <>
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center min-h-screen">
             <div className="w-1/2 h-screen hidden lg:block">
             <img src="/dog.jpg" alt="Placeholder Image" className="object-cover w-full h-full" />
             </div>
-            <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+            <div className="lg:p-36 md:p-52  sm:20 py-4 px-8 w-full lg:w-1/2">
             <h1 className="text-4xl font-bold mb-1 dark:text-white">Welcome to Strayos!</h1>
             <p className="text-[#555] mb-5 dark:text-[#d9d9d9]">Sign up and start finding some strays.</p>
             <form action="#" method="POST">
                 <div className="mb-4">
-                    <Label className=" text-gray-600 mb-2 dark:text-[#c2c2c2]">Username</Label>
-                    <Input type="text" className="dark:text-white" required onChange={(e: any) => setUsername(e.target.value)}/>
+                    <Label className=" text-gray-100 mb-2 dark:text-white">Username</Label>
+                    <Input type="text" className="dark:text-white dark:border-[#333] focus:border-white" required onChange={(e: any) => setUsername(e.target.value)}/>
                 </div>
                 <div className="mb-4">
-                    <Label className=" text-gray-600 mb-2 dark:text-[#c2c2c2]">Email</Label>
-                    <Input type="email" className="dark:text-white" required onChange={(e: any) => setEmail(e.target.value)}/>
+                    <Label className=" text-gray-100 mb-2 dark:text-white">Email</Label>
+                    <Input type="email" className="dark:text-white dark:border-[#333] focus:border-white" required onChange={(e: any) => setEmail(e.target.value)}/>
                 </div>
                 <div className="mb-4">
-                    <Label className=" text-gray-600 mb-2 dark:text-[#c2c2c2]">Password</Label>
-                    <Input type="password" className="dark:text-white" required  onChange={(e: any) => setPassword(e.target.value)} />
+                    <Label className=" text-gray-100 mb-2 dark:text-white">Password</Label>
+                    <Input type="password" className="dark:text-white dark:border-[#333] focus:border-white" required  onChange={(e: any) => setPassword(e.target.value)} />
                 </div>
                 <div className="mb-10">
-                    <Label className=" text-gray-600 mb-2 dark:text-[#c2c2c2]">Confirm Password</Label>
-                    <Input type="password" className="dark:text-white" required onChange={(e: any) => setConfirmPassword(e.target.value)}/>
+                    <Label className=" text-gray-100 mb-2 dark:text-white">Confirm Password</Label>
+                    <Input type="password" className="dark:text-white dark:border-[#333] focus:border-white" required onChange={(e: any) => setConfirmPassword(e.target.value)}/>
                 </div>
              
                 <Button type="submit" className="w-full mb-2 dark:bg-[#333]" onClick={handleSubmit}>Login</Button>
