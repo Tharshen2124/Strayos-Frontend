@@ -74,9 +74,6 @@ export default function Main() {
         })
       }
     }
-
-    toast
-
     getData()
   }, [token, isOnClient])
 
