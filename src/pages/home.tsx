@@ -10,24 +10,29 @@ import { useRouter } from 'next/router';
 import { NavigationBar } from '../components/NavigationBar';
 import { getTimeDifference } from '../utils/getTimeDifference';
 import MoreInfoDialog from '../components/MoreInfoPetDialog';
+import { Spinner } from '../components/LoadingSpinner';
+import { useToast } from '../hooks/use-toast';
 
 export default function Main() {
-  const { token } = useAuthStore.getState()
-  const [data, setData] = useState<Straypet[]>()
-  const [latitude, setLatitude] = useState<number>(0)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [longitude, setLongitude] = useState<number>(0)
-  const [error, setError] = useState<string>()
-  const router = useRouter()
+  const { token } = useAuthStore.getState();
+  const [data, setData] = useState<Straypet[]>();
+  const [latitude, setLatitude] = useState<number>(0);
+  const [longitude, setLongitude] = useState<number>(0);
+  const [errorMessage, setErrorMessage] = useState<string>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isOnClient, setIsOnClient] = useState(true)
+  const router = useRouter();
+  const { toast } = useToast()
   
   useEffect(() => {
-    if(isLoading) {
-      setIsLoading(false)
-      return 
+    if (isOnClient) {
+      setIsOnClient(false)
+      return
     }
-    console.log('token', token)
-    if (token && token == 'No Value') {
-      router.push('/login')
+
+    if (token && token === 'No Value') {
+      router.push('/login');
+      return;
     }
 
     if (navigator.geolocation) {
@@ -35,14 +40,21 @@ export default function Main() {
         (position: any) => {
           setLatitude(position.coords.latitude);
           setLongitude(position.coords.longitude);
+          setIsLoading(false); // Stop loading once location is set
         },
         (err) => {
-          setError("Error getting location. Please enable location services.");
+          setErrorMessage("Error getting location. Please enable location services.");
           console.error(err);
+          toast({
+            title: "Please enable your location to use our service.",
+            variant: "destructive",
+          })
+          setIsLoading(false); // Stop loading if location fails
         }
       );
     } else {
-        setError("Geolocation is not supported by this browser.");
+      setErrorMessage("Geolocation is not supported by this browser.");
+      setIsLoading(false); // Stop loading if geolocation is unsupported
     }
 
     async function getData() {
@@ -50,25 +62,46 @@ export default function Main() {
         const response = await axios.get(`${apiUrl}/stray-pets`, {
           headers: {
             'Accept': "application/json",
-            "Authorization":  `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
           }
+        });
+        setData(response.data.data);
+      } catch (error) {
+        console.error("Error occurred", error);
+        toast({
+          title: "Uh Oh! An error occured.",
+          variant: "destructive",
         })
-        setData(response.data.data)
-      } catch(error) {
-        console.error("Error occured", error)
       }
     }
-    getData()  
-  }, [token, isLoading, latitude, longitude])
+
+    toast
+
+    getData()
+  }, [token, isOnClient])
+
+  if (isLoading) {
+    return <Spinner />
+  }
+
+  if(!isLoading && errorMessage) {
+    return (
+      <div className="flex items-center justify-center h-screen w-full">
+        <h1 className="text-center text-lg font-semibold dark:text-[#e0e0e0]">
+          An error occurred, please try again
+        </h1>
+      </div>
+    )
+  }
 
   return (
     <>
-     {!isLoading && <NavigationBar/>}
+     <NavigationBar/>
      <div className="h-[100vh] w-[100%]">
       <APIProvider apiKey={apiKey} onLoad={() => console.log('Maps API has loaded.')}>
         <Map
           defaultZoom={13}
-          defaultCenter={{ lat: 2.9304793, lng: 101.5795701 }}
+          defaultCenter={{ lat: latitude, lng: longitude }}
           mapId={mapId}
           mapTypeControl={false}
           fullscreenControl={false}
