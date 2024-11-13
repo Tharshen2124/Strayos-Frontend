@@ -32,7 +32,7 @@ export default function LoginCard() {
   const HandleGoogleLoginOAuth = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
           toast({
-            title: "Attempting your login...",
+            title: "Attempting to login...",
             description: "Gotta check if you're not animal control :P",
           })
           try {
@@ -68,6 +68,10 @@ export default function LoginCard() {
   })
 
   async function loginUser() {
+    toast({
+      title: "Attempting to login...",
+      description: "Gotta check if you're not animal control :P",
+    })
     try {
       const response: AxiosResponse = await axios.post(`${apiUrl}/login`, {
         "email": email,
@@ -84,7 +88,7 @@ export default function LoginCard() {
           title: "Noice! You're logged in.",
         })
         setToken(response.data.token); // Save token in Zustand and cookies
-        router.push('/')
+        router.push('/home')
       } else {
         toast({
           title: "Uh Oh! An error occured.",
@@ -125,6 +129,7 @@ export default function LoginCard() {
                 placeholder="m@example.com"
                 onChange={(event) => setEmail(event.target.value)}
                 required
+                className="dark:text-white" 
               />
             </div>
             <div className="grid gap-2">
@@ -138,6 +143,7 @@ export default function LoginCard() {
                 id="password" 
                 type="password"
                 required 
+                className="dark:text-white" 
                 onChange={(event) => setPassword(event.target.value)}
               />
             </div>

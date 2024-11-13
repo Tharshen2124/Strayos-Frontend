@@ -35,7 +35,7 @@ export default function Landing() {
   return (
     <>
         <div className="h-screen flex flex-col">
-    <nav className="flex justify-between my-6 mx-10">
+    <nav className="flex justify-between my-6 sm:mx-10 mx-6">
         {isDarkMode ?
             <Image 
                 src="/LogoDark.svg" 

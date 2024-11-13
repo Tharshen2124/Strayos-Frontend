@@ -20,6 +20,10 @@ export default function Signup() {
 
     const HandleGoogleLoginOAuth = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
+            toast({
+                title: "Attempting to login...",
+                description: "Gotta check if you're not animal control :P",
+            })
             try {
                 const response: AxiosResponse = await axios.post(`${apiUrl}/google-oauth/login`,{ 
                         "accessToken": tokenResponse.access_token
@@ -34,9 +38,6 @@ export default function Signup() {
                 if(response.data.token) { 
                     toast({
                         title: "Noice! You're logged in.",
-                        action: (
-                          <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-                        ),
                       })
                     setToken(response.data.token)
                     router.push('/')
@@ -56,6 +57,10 @@ export default function Signup() {
     })
 
     async function handleSubmit(event: any) {
+        toast({
+            title: "Attempting to login...",
+            description: "Gotta check if you're not animal control :P",
+        })
         event.preventDefault()
         if (password !== confirmPassword) {
             console.log("Password doesn't match")
@@ -76,12 +81,9 @@ export default function Signup() {
             if(response.data.token) { 
                 toast({
                     title: "Noice! You're logged in.",
-                    action: (
-                      <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-                    ),
                   })
                 setToken(response.data.token)
-                router.push('/')
+                router.push('/home')
             } else {
                 toast({
                     title: "Uh Oh! An error occured.",
@@ -113,19 +115,19 @@ export default function Signup() {
             <form action="#" method="POST">
                 <div className="mb-4">
                     <Label className=" text-gray-600 mb-2 dark:text-[#c2c2c2]">Username</Label>
-                    <Input type="text" onChange={(e: any) => setUsername(e.target.value)}/>
+                    <Input type="text" className="dark:text-white" required onChange={(e: any) => setUsername(e.target.value)}/>
                 </div>
                 <div className="mb-4">
                     <Label className=" text-gray-600 mb-2 dark:text-[#c2c2c2]">Email</Label>
-                    <Input type="email" onChange={(e: any) => setEmail(e.target.value)}/>
+                    <Input type="email" className="dark:text-white" required onChange={(e: any) => setEmail(e.target.value)}/>
                 </div>
                 <div className="mb-4">
                     <Label className=" text-gray-600 mb-2 dark:text-[#c2c2c2]">Password</Label>
-                    <Input type="password" onChange={(e: any) => setPassword(e.target.value)} />
+                    <Input type="password" className="dark:text-white" required  onChange={(e: any) => setPassword(e.target.value)} />
                 </div>
                 <div className="mb-10">
                     <Label className=" text-gray-600 mb-2 dark:text-[#c2c2c2]">Confirm Password</Label>
-                    <Input type="password" onChange={(e: any) => setConfirmPassword(e.target.value)}/>
+                    <Input type="password" className="dark:text-white" required onChange={(e: any) => setConfirmPassword(e.target.value)}/>
                 </div>
              
                 <Button type="submit" className="w-full mb-2 dark:bg-[#333]" onClick={handleSubmit}>Login</Button>
